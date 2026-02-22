@@ -1,0 +1,36 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 1. Create the DataFrame
+data = {
+    'City': ['London', 'Paris', 'New York', 'London', 'Paris', 'New York', 'London', 'Paris', 'New York'],
+    'Month': ['Jan', 'Jan', 'Jan', 'Feb', 'Feb', 'Feb', 'Mar', 'Mar', 'Mar'],
+    'Sales': [1000, 1200, 1500, 1100, 1300, 1600, 1050, 1250, 1550],
+    'Profit': [200, 300, 400, 220, 320, 450, 210, 310, 430]
+}
+
+df = pd.DataFrame(data)
+
+# 2. Aggregation
+city_totals = df.groupby('City')[['Sales', 'Profit']].sum()
+print(city_totals)
+
+# --- 3. SAVING PLOTS TO FILES (No Pop-up) ---
+sns.set_theme(style="whitegrid")
+
+# Create Monthly Sales Plot
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=df, x='Month', y='Sales', hue='City', marker='o')
+plt.title('Monthly Sales Trend')
+plt.savefig('sales_trend.png') # This saves the file to your folder
+plt.close() # Closes the figure so no window pops up
+sales_trend.png
+# Create Sales vs Profit Plot
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data=df, x='Sales', y='Profit', hue='City', s=100)
+plt.title('Sales vs Profit')
+plt.savefig('sales_vs_profit.png') # This saves the second file
+plt.close()
+
+print("\nSuccess! Plots have been saved as 'sales_trend.png' and 'sales_vs_profit.png'.")
