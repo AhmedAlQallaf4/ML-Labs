@@ -25,7 +25,7 @@ sns.lineplot(data=df, x='Month', y='Sales', hue='City', marker='o')
 plt.title('Monthly Sales Trend')
 plt.savefig('sales_trend.png') # This saves the file to your folder
 plt.close() # Closes the figure so no window pops up
-sales_trend.png
+
 # Create Sales vs Profit Plot
 plt.figure(figsize=(8, 6))
 sns.scatterplot(data=df, x='Sales', y='Profit', hue='City', s=100)
